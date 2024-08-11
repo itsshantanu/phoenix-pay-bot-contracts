@@ -1,66 +1,52 @@
-## Foundry
+# MultiTokenSplitwise
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains Solidity smart contracts for managing multi-token group expenses and split payments among participants. The system supports both ETH and ERC20 tokens, allowing for flexible contributions and automated settlements.
 
-Foundry consists of:
+## Contracts
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+### MultiTokenSplitwise.sol
+This contract facilitates the creation and management of expense splits among participants using ETH or ERC20 tokens. Key features:
+- **Create Expense Splits**: Initiate a new split specifying the total amount, number of participants, and duration.
+- **Multi-Token Support**: Contribute using ETH or any ERC20 token.
+- **Cancel or Close Splits**: Cancel an ongoing split or automatically close it once contributions are complete.
+- **Withdraw Contributions**: Participants can withdraw their contributions if the split is canceled or the deadline passes.
 
 ## Usage
 
-### Build
+### Deployment
+1. Deploy the `MultiTokenSplitwise` contract on the desired blockchain.
+2. Configure the contract with the appropriate settings, including token addresses and participants.
 
-```shell
-$ forge build
-```
+### Configuration
+- Use the `createSplit` function to initiate a new expense split.
+- Participants can contribute using the `contribute` function.
+- The initiator can cancel the split using the `cancelSplit` function if needed.
 
-### Test
+## Functions
 
-```shell
-$ forge test
-```
+### MultiTokenSplitwise
+- `createSplit(string memory _purpose, address _tokenAddress, uint256 _totalAmount, uint256 _numberOfParticipants, uint256 _durationInDays)`
+- `contribute(bytes32 _splitId) external payable nonReentrant`
+- `cancelSplit(bytes32 _splitId) external`
+- `withdrawFunds(bytes32 _splitId) external nonReentrant`
+- `getSplitDetails(bytes32 _splitId) external view returns (address, string memory, address, uint256, uint256, uint256, uint256, uint256, bool, bool)`
+- `hasContributed(bytes32 _splitId, address _participant) external view returns (bool)`
+- `getAmountPerParticipant(bytes32 _splitId) external view returns (uint256)`
 
-### Format
+### Supported Tokens
+- **ETH**: Native cryptocurrency for Ethereum and compatible blockchains.
+- **ERC20 Tokens**: Any ERC20-compliant token.
 
-```shell
-$ forge fmt
-```
+## Deployed Contract Addresses
 
-### Gas Snapshots
+### Base Sepolia
 
-```shell
-$ forge snapshot
-```
+- MultiTokenSplitwise contract address: [0xf6f6E270BD1138eF4881c19eA004652d9ca09473](https://sepolia.basescan.org/address/0xf6f6E270BD1138eF4881c19eA004652d9ca09473)
 
-### Anvil
+### OP Sepolia
 
-```shell
-$ anvil
-```
+- MultiTokenSplitwise contract address: [0xf6f6E270BD1138eF4881c19eA004652d9ca09473](https://sepolia-optimism.etherscan.io/address/0xf6f6E270BD1138eF4881c19eA004652d9ca09473)
 
-### Deploy
+## License
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+This project is licensed under the MIT License.
