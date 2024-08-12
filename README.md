@@ -47,6 +47,14 @@ This contract facilitates the creation and management of expense splits among pa
 
 - MultiTokenSplitwise contract address: [0xf6f6E270BD1138eF4881c19eA004652d9ca09473](https://sepolia-optimism.etherscan.io/address/0xf6f6E270BD1138eF4881c19eA004652d9ca09473)
 
+### Metal L2 Testnet
+
+- MultiTokenSplitwise contract address: [0xD18230c420f78B4Cb71Ba87fdd7129A8E34730D7](https://testnet.explorer.metall2.com/address/0xD18230c420f78B4Cb71Ba87fdd7129A8E34730D7)
+
+### Mode Sepolia
+
+- MultiTokenSplitwise contract address: [0xD18230c420f78B4Cb71Ba87fdd7129A8E34730D7](https://sepolia.explorer.mode.network/address/0xD18230c420f78B4Cb71Ba87fdd7129A8E34730D7)
+
 ## License
 
 This project is licensed under the MIT License.
